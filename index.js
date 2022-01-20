@@ -22,7 +22,12 @@ app.get('/item/:id', (req, res, next) => {
 
 app.post('/newItem', (req, res) => res.send(`a post request with /newItem route on port ${PORT}`));
 
-app.put('/item', (req, res) => res.send(`a put request with /item route on port ${PORT}`));
+app.get('/images', (req, res) => {
+    //res.send(`a put request with /item route on port ${PORT}`);
+    //res.end;
+    //res.redirect('http://www.google.com');
+    res.download('images/rocket.jpg')
+});
 
 app.delete('/item', (req, res) => res.send(`a delete request with /item route on port ${PORT}`));
 
