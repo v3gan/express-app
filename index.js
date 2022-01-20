@@ -12,6 +12,15 @@ app.use('/images', express.static('images'));
 
 app.get('/', (req, res) => res.json(data));
 
+app.get('/item/:id', (req, res) => {
+    console.log(req.params.id);
+    let userId = Number(req.params.id);
+    console.log(userId);
+    const user = data.filter(u=>u.id == userId)[0];
+    console.log(user);
+    res.send(user);
+});
+
 app.post('/newItem', (req, res) => res.send(`a post request with /newItem route on port ${PORT}`));
 
 app.put('/item', (req, res) => res.send(`a put request with /item route on port ${PORT}`));
