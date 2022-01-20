@@ -4,6 +4,12 @@ import data from './data/data.json'
 const app = express();
 const PORT = 3000;
 
+// this is for the public folder on path /
+app.use(express.static('public'));
+
+// this is for the images folder on path /images
+app.use('/images', express.static('images'));
+
 app.get('/', (req, res) => res.json(data));
 
 app.post('/newItem', (req, res) => res.send(`a post request with /newItem route on port ${PORT}`));
@@ -14,5 +20,5 @@ app.delete('/item', (req, res) => res.send(`a delete request with /item route on
 
 app.listen(PORT, () => {
     console.log(`server running on port ${PORT}`);
-    console.log(data);
+    //console.log(data);
 });
