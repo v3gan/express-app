@@ -4,7 +4,7 @@ import data from './data/data.json'
 const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => res.send(`a get request with / route on port ${PORT}`));
+app.get('/', (req, res) => res.json(data));
 
 app.post('/newItem', (req, res) => res.send(`a post request with /newItem route on port ${PORT}`));
 
