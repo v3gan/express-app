@@ -51,7 +51,8 @@ app.get(
 app
   .route("/item")
   .get((req, res) => {
-    res.send(`a get request with /item route on port ${PORT}`);
+    throw new Error();
+    //res.send(`a get request with /item route on port ${PORT}`);
     //res.end;
     //res.redirect('http://www.google.com');
     //res.download('images/rocket.jpg')
@@ -62,6 +63,12 @@ app
   .delete((req, res) =>
     res.send(`a delete request with /item route on port ${PORT}`)
   );
+
+// Error handling function
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send(`red alert! ${err.stack}`);
+})
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
